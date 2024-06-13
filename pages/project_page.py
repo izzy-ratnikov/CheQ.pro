@@ -9,9 +9,6 @@ class ProjectPage(BasePage):
     CREATE_PROJECT = '//body/div[2]//button[1]/span'
     OPEN_PROJECT = '.open-button'
 
-    # def __init__(self, page):
-    #     self.page = page
-
     def press_button_create_project(self):
         self.page.locator(self.BUTTON_OPEN_CREATE_PROJECT).click()
 

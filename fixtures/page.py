@@ -16,6 +16,7 @@ def page():  # Изменение типа возвращаемого значе
     playwright = sync_playwright().start()
     browser = get_chrome_browser(playwright)
     context = get_context(browser)
+    # context = browser.new_context(record_video_dir='videos/')
     page = context.new_page()
     # Создаем экземпляр CheqPage
     yield page  # Возвращаем cheq_page вместо page_data

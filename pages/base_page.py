@@ -1,5 +1,7 @@
 import random
 import string
+from time import sleep
+import allure
 from playwright.sync_api import Page, expect
 
 from config import Url
@@ -32,3 +34,19 @@ class BasePage:
             expect(new_url).to_have_url(url)
         else:
             print("Время ожидания истекло, URL не найден.")
+
+    def assert_element_hidden(self, selector):
+        expect(self.page.locator(selector)).to_be_hidden()
+
+    def is_element_visible(self, selector):
+        with allure.step(f"Проверка видимости элемента: {selector}"):
+            expect(self.page.locator(selector)).to_be_visible()
+
+    def is_element_contains_text(self, selector, text):
+        expect(self.page.locator(selector)).to_contain_text(text)
+
+    def wait_five_seconds(self):
+        self.page.wait_for_timeout(5000)
+
+    def inner_text(self, locator):
+        self.page.inner_text(locator)

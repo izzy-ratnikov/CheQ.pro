@@ -98,6 +98,7 @@ class TestCheq:
         main_page.log_in_to_account()
         project_page.open_project()
         repository_page.rename_project()
-        time.sleep(3)
 
-
+    def test_delete_count(self, main_page, project_page, repository_page):
+        main_page.log_in_to_account()
+        project_page.open_project()

@@ -48,7 +48,7 @@ def repository_page(page):
 
 def get_chrome_browser(playwright) -> Browser:
     return playwright.chromium.launch(
-        headless=config.playwright.IS_HEADLESS,
+        headless=True,
         slow_mo=config.playwright.SLOW_MO
     )
 

@@ -99,11 +99,7 @@ class RepositoryPage(BasePage):
         suite.locator(self.ADD_EDIT_DELETE).nth(2).click()
         self.is_element_visible(self.DELETE_MODEL_WINDOW)
         self.page.locator(self.DELETE_SUITE).click()
-
-    # def press_view_on_cheq(self):
-    #     cheq = self.page.locator(self.CHEQ_FORM).nth(0)
-    #     cheq.locator(self.ADD_EDIT_DELETE).nth(0).click()
-    #     self.is_element_visible(self.WINDOW_SMALL_VIEW)
+        expect(self.page.locator(self.SUITE_FORM)).to_have_count(2)
 
     def menu_panel(self):
         self.is_element_visible(self.LEFT_MENU_PANEL)
@@ -122,6 +118,7 @@ class RepositoryPage(BasePage):
         window_view = self.page.locator(self.WINDOW_SMALL_VIEW)
         window_view.locator(self.BUTTON_ON_CHEQ).nth(1).click()
         self.page.locator(self.DELETE_CHEQ).click()
+        expect(self.page.locator(self.CHEQ_FORM)).to_have_count(0)
 
     def press_collapse_button(self):
         self.page.locator(self.COLLAPSE_BUTTON).nth(0).click()
@@ -141,4 +138,3 @@ class RepositoryPage(BasePage):
         self.page.locator(self.SAVE_NEW_NAME_PROJECT).click()
         new_project_name = self.page.text_content(self.PROJECT_NAME)
         self.is_element_contains_text(self.PROJECT_NAME, new_project_name)
-        

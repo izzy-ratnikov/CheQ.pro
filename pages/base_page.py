@@ -28,12 +28,9 @@ class BasePage:
         letters_and_digits = string.ascii_letters + string.digits
         return ''.join(random.choice(letters_and_digits) for _ in range(password_length))
 
-    def wait_for_url(self, url):
-        new_url = self.page.wait_for_url(url)
-        if new_url is not None:
-            expect(new_url).to_have_url(url)
-        else:
-            print("Время ожидания истекло, URL не найден.")
+    def wait_for_url_change(self, expected_url):
+        with allure.step(f"Ожидание изменения URL на {expected_url}"):
+            self.page.wait_for_url(expected_url)
 
     def assert_element_hidden(self, selector):
         expect(self.page.locator(selector)).to_be_hidden()

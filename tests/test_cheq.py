@@ -9,12 +9,12 @@ class TestCheq:
 
     def test_login(self, main_page):
         main_page.log_in_to_account()
-        main_page.wait_for_url(Url.CHEQPRO_PROJECT)
+        main_page.wait_for_url_change(Url.CHEQPRO_PROJECT)
 
     def test_open_project(self, main_page, project_page):
         main_page.log_in_to_account()
         project_page.open_project()
-        main_page.wait_for_url(Url.CHEQPRO_REPOSITORY)
+        main_page.wait_for_url_change(Url.CHEQPRO_REPOSITORY)
 
     def test_create_suite(self, main_page, project_page, repository_page, base_page):
         main_page.log_in_to_account()

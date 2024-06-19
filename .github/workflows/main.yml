@@ -8,12 +8,14 @@ on:
 
 jobs:
   test:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
     steps:
       - uses: actions/checkout@v3
       - name: Install dependences
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt; pip install allure-pytest
+      - name: run tests
+        run: pytest
     
   

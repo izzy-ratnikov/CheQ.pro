@@ -1,3 +1,5 @@
+import time
+
 from pages.base_page import BasePage
 from playwright.sync_api import Page
 import config
@@ -5,6 +7,7 @@ from playwright.sync_api import expect
 
 
 class RepositoryPage(BasePage):
+    OPTIONS = '.options'
     SWIPE = 'back-arrow'
     BUTTON_ON_CHEQ = '.icon-btn.stroke.normal'
     ADD_CHEQ_SUITE = '.add-tooltip'
@@ -39,6 +42,12 @@ class RepositoryPage(BasePage):
     RENAME_BOX = '.v-field__input'
     SAVE_NEW_NAME_PROJECT = '.primary-btn'
     PROJECT_NAME = 'div.left-menu > div.avatar > h3'
+    CHEQ_TYPE = '.selected:has-text("other")'
+    CHEQ_STATUS = '.selected:has-text("Actual")'
+    CHEQ_PRIORITY = '.selected:has-text("Not set")'
+    CHEQ_BEHAVIOR = '.selected:has-text("Positive")'
+    CHEQ_SEVERITY = '.selected:has-text("Not set")'
+
 
     def __init__(self, page):
         super().__init__(page)
@@ -58,6 +67,16 @@ class RepositoryPage(BasePage):
         self.page.locator(f'{self.CREATE_CHEQ_MAIN}, {self.CREATE_CHEQ}').click()
         self.page.locator(self.NAME_CHEQ).click()
         self.page.locator(self.NAME_CHEQ).fill(BasePage.generate_random_string())
+        self.page.locator(self.CHEQ_TYPE).click()
+        self.is_element_visible(self.OPTIONS)
+        self.page.locator(self.CHEQ_STATUS).click()
+        self.is_element_visible(self.OPTIONS)
+        self.page.locator(self.CHEQ_PRIORITY).nth(0).click()
+        self.is_element_visible(self.OPTIONS)
+        self.page.locator(self.CHEQ_BEHAVIOR).click()
+        self.is_element_visible(self.OPTIONS)
+        self.page.locator(self.CHEQ_SEVERITY).nth(1).click()
+        self.is_element_visible(self.OPTIONS)
         with self.page.expect_response("**/case") as response_info:
             self.page.locator(self.SAVE_CHEQ).click()
         return response_info.value.json().get('name')

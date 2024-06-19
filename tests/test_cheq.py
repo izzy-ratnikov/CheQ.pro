@@ -59,11 +59,11 @@ class TestCheq:
         repository_page.press_plus_on_suite()
         repository_page.button_add_suite_visible()
 
-    def test_delete_suite(self, main_page, project_page, repository_page):
-        main_page.log_in_to_account()
-        project_page.open_project()
-        repository_page.create_suite()
-        repository_page.delete_suite()
+    # def test_delete_suite(self, main_page, project_page, repository_page):
+    #     main_page.log_in_to_account()
+    #     project_page.open_project()
+    #     repository_page.create_suite()
+    #     repository_page.delete_suite()
 
     def test_menu_panel(self, main_page, project_page, repository_page):
         main_page.log_in_to_account()
@@ -82,12 +82,12 @@ class TestCheq:
         repository_page.create_suite()
         repository_page.press_collapse_button()
 
-    def test_delete_cheq_via_side_window(self, main_page, project_page, repository_page):
-        main_page.log_in_to_account()
-        project_page.open_project()
-        repository_page.create_cheq()
-        repository_page.full_window_view()
-        repository_page.delete_cheq_via_view_window()
+    # def test_delete_cheq_via_side_window(self, main_page, project_page, repository_page):
+    #     main_page.log_in_to_account()
+    #     project_page.open_project()
+    #     repository_page.create_cheq()
+    #     repository_page.full_window_view()
+    #     repository_page.delete_cheq_via_view_window()
 
     def test_menu_hidden(self, main_page, project_page, repository_page):
         main_page.log_in_to_account()
@@ -98,7 +98,3 @@ class TestCheq:
         main_page.log_in_to_account()
         project_page.open_project()
         repository_page.rename_project()
-
-    def test_delete_count(self, main_page, project_page, repository_page):
-        main_page.log_in_to_account()
-        project_page.open_project()

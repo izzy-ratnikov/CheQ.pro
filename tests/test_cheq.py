@@ -98,3 +98,11 @@ class TestCheq:
         main_page.log_in_to_account()
         project_page.open_project()
         repository_page.rename_project()
+
+    def test_switch_to_cheq_runs(self, main_page, project_page, repository_page):
+        main_page.log_in_to_account()
+        project_page.open_project()
+        repository_page.switch_to_cheq_runs()
+
+
+

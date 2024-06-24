@@ -47,6 +47,7 @@ class RepositoryPage(BasePage):
     CHEQ_PRIORITY = '.selected:has-text("Not set")'
     CHEQ_BEHAVIOR = '.selected:has-text("Positive")'
     CHEQ_SEVERITY = '.selected:has-text("Not set")'
+    CREATE_RUN = '.btn-block'
 
 
     def __init__(self, page):
@@ -157,3 +158,8 @@ class RepositoryPage(BasePage):
         self.page.locator(self.SAVE_NEW_NAME_PROJECT).click()
         new_project_name = self.page.text_content(self.PROJECT_NAME)
         self.is_element_contains_text(self.PROJECT_NAME, new_project_name)
+
+    def switch_to_cheq_runs(self):
+        self.page.locator(self.MENU_BUTTONS).nth(1).click()
+        self.page.locator(self.CREATE_RUN).click()
+
